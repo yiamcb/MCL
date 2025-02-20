@@ -20,6 +20,6 @@ MCL achieves 96.6% cross-subject accuracy on cognitive BCI tasks, outperforming 
 - DataAugmentation.py --> Data augmentation pipeline for EEG-fNIRS features
 - ModelInitialization.py --> Initializes task distributions and optimizers
 - TrainingLoop.py --> Implements inner and outer loop training for meta-learning
-- ModelArchitecture.py --> Defines the MCL architecture with attention mechanism
+- ModelArchitecture.py --> Defines the CNN-LSTM architecture with attention mechanism
 
 # If you find this work useful, please cite our article:
