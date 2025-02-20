@@ -16,15 +16,10 @@ MCL achieves 96.6% cross-subject accuracy on cognitive BCI tasks, outperforming 
 - Attention Mechanism: Selectively enhances critical EEG-fNIRS features, reducing irrelevant noise.
 - Optimized Feature Selection: Identifies key EEG-fNIRS features (e.g., FDS, TDT) for improved model generalization.
   
-## File Structure
-|-- DataAugmentation.py         # Data augmentation pipeline for EEG-fNIRS features
-
-|-- ModelInitialization.py      # Initializes task distributions and optimizers
-
-|-- TrainingLoop.py             # Implements inner and outer loop training for meta-learning
-
-|-- ModelArchitecture.py        # Defines the CNN-LSTM architecture with attention mechanism
-
-|-- README.md                   # This file
+# File Structure
+- DataAugmentation.py --> Data augmentation pipeline for EEG-fNIRS features
+- ModelInitialization.py --> Initializes task distributions and optimizers
+- TrainingLoop.py --> Implements inner and outer loop training for meta-learning
+- ModelArchitecture.py --> Defines the MCL architecture with attention mechanism
 
 # If you find this work useful, please cite our article:
