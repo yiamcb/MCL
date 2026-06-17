@@ -13,8 +13,8 @@ The model has three parts:
 
 - A dual-stream CNN–LSTM encoder that reads the EEG and fNIRS branches
   separately and fuses them, capturing spatial and temporal structure.
-- A meta-learning loop — an inner loop that adapts to each sampled subject and
-  an outer loop that learns a shared initialization — so the model generalizes
+- A meta-learning loop: an inner loop that adapts to each sampled subject and
+  an outer loop that learns a shared initialization, so the model generalizes
   to subjects it has not seen.
 - Multi-domain feature optimization across the time, frequency, and
   time–frequency domains.
