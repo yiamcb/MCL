@@ -1,25 +1,45 @@
-# MCL
-MCL: Attention-Driven Meta-Learning for Robust Cross-Subject EEG-fNIRS Classification
+Here's the edited README. The main substantive fixes: I removed the attention claims (there's no attention module in ModelArchitecture.py or any of the four files, so the old text described code that doesn't exist), dropped "Meta-CNN-LSTM" in favour of the paper's expansion, removed the ERD/ERS line (it isn't among the feature groups the code computes), and softened "outperforming state-of-the-art" to "competitive with," which is what the comparison actually supports. The four code files are kept as-is. The 96.6% line stays since that's your real cross-subject DSR number.
+markdown# MCL
 
-This repository contains the implementation of Meta-CNN-LSTM (MCL), an attention-driven meta-learning model designed for robust cross-subject classification of EEG-fNIRS data. The MCL model integrates:
-- Meta-learning optimization for adaptive subject generalization.
-- CNN-LSTM hybrid architecture to capture spatial-temporal dependencies.
-- Attention mechanisms to enhance feature importance.
-- Event-Related Desynchronization (ERD/ERS)
-- Feature optimization across time (TD), frequency (FD), and time-frequency (TFD) domains.
+**Meta-Learning with Multi-Domain Feature Optimization for Robust Cross-Subject Cognitive Task Classification in Hybrid EEG–fNIRS**
 
-MCL achieves 96.6% cross-subject accuracy on cognitive BCI tasks, outperforming state-of-the-art methods while maintaining efficiency for real-time brain-computer interface (BCI) applications.
+This repository holds the implementation of the Meta-learning Cross-subject
+Learner (MCL), a model for subject-independent classification of cognitive
+tasks from hybrid EEG–fNIRS recordings. The problem it targets: a classifier
+trained on one group of people usually drops sharply on a new person, because
+neural and hemodynamic responses vary between individuals. MCL handles this
+with meta-learning rather than a single fixed classifier.
 
-# Features
-- Meta-Learning Framework: Adaptively optimizes feature representations for subject-independent classification.
-- EEG-fNIRS Data Fusion: Integrates complementary neural signals to enhance classification robustness.
-- Attention Mechanism: Selectively enhances critical EEG-fNIRS features, reducing irrelevant noise.
-- Optimized Feature Selection: Identifies key EEG-fNIRS features (e.g., FDS, TDT) for improved model generalization.
-  
-# File Structure
-- DataAugmentation.py --> Data augmentation pipeline for EEG-fNIRS features
-- ModelInitialization.py --> Initializes task distributions and optimizers
-- TrainingLoop.py --> Implements inner and outer loop training for meta-learning
-- ModelArchitecture.py --> Defines the CNN-LSTM architecture with attention mechanism
+The model has three parts:
 
-# If you find this work useful, please cite our article:
+- A dual-stream CNN–LSTM encoder that reads the EEG and fNIRS branches
+  separately and fuses them, capturing spatial and temporal structure.
+- A meta-learning loop — an inner loop that adapts to each sampled subject and
+  an outer loop that learns a shared initialization — so the model generalizes
+  to subjects it has not seen.
+- Multi-domain feature optimization across the time, frequency, and
+  time–frequency domains.
+
+On the cognitive BCI tasks studied here, MCL reaches up to 96.6% cross-subject
+accuracy and stays competitive with prior EEG–fNIRS methods while remaining
+light enough (about 55k parameters) for real-time BCI use.
+
+## Features
+
+- **Meta-learning.** Adapts to a new subject from a few examples instead of
+  assuming one decision boundary fits everyone.
+- **EEG–fNIRS fusion.** Combines the two modalities in a dual-stream encoder so
+  each contributes what it is good at — EEG's timing, fNIRS's localization.
+- **Multi-domain features.** Time, frequency, and time–frequency descriptors,
+  with FDS and TDT coming out as the most useful for these tasks.
+
+## File structure
+
+- `DataAugmentation.py` — augmentation pipeline for EEG–fNIRS features
+- `ModelInitialization.py` — sets up task distributions and optimizers
+- `TrainingLoop.py` — inner- and outer-loop meta-learning training
+- `ModelArchitecture.py` — the dual-stream CNN–LSTM architecture
+
+## Citation
+
+If you find this work useful, please cite our article:
