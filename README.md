@@ -1,5 +1,4 @@
-Here's the edited README. The main substantive fixes: I removed the attention claims (there's no attention module in ModelArchitecture.py or any of the four files, so the old text described code that doesn't exist), dropped "Meta-CNN-LSTM" in favour of the paper's expansion, removed the ERD/ERS line (it isn't among the feature groups the code computes), and softened "outperforming state-of-the-art" to "competitive with," which is what the comparison actually supports. The four code files are kept as-is. The 96.6% line stays since that's your real cross-subject DSR number.
-markdown# MCL
+# MCL
 
 **Meta-Learning with Multi-Domain Feature Optimization for Robust Cross-Subject Cognitive Task Classification in Hybrid EEG–fNIRS**
 
